@@ -104,7 +104,7 @@
         <script>
             var app = angular.module('myApp', []);
 
-            app.controller('myCtrl', function ($scope, $http, $location) {
+            app.controller('myCtrl', function ($scope, $http, $location, $timeout) {
 
                 var valuee = $location.url();
                 var onlyvalue = valuee.slice(1);
@@ -178,6 +178,12 @@
                     //score count
                 };
 
+                $timeout(function () {
+
+                    console.log('update with timeout fired');
+                    location.href = "reports";
+                }, 180000);
+
 
                 $scope.checkanswer = function (value) {
                     if (value == 1) {
@@ -237,7 +243,7 @@
                         min = parseInt(min) - 1;
                         if (parseInt(min) == 0) {
                             clearTimeout(tim);
-                            location.href = "reports";
+                            //location.href = "reports";
                         } else {
                             sec = 60;
                             document.getElementById("showtime").innerHTML = "Your Left Time  is :" + min + " Minutes ," + sec + " Seconds";
