@@ -159,11 +159,8 @@
 
                 $scope.nextquestion = function(value) {
                     console.log("clicked done");
-
                     $scope.checkanswer(value);
-
                     $scope.score(value);
-
                     refresh();
                 };
 
@@ -197,37 +194,63 @@
 
 
 
-                //checkanswer
+
+
+                //check 10 ques
+                //                $scope.maxquestion = function() {
+                //                    if (i > 0; i <= 10; i++) {
+                //                        console.log("10 question done");
+                //                    }
+                //                }
+
+
+
+
+
+
+
+
+                //check right answer
                 $scope.checkanswer = function(value) {
+
                     if (value == 1) {
                         if ($scope.answers.option1 == true) {
                             console.log('right answer');
+                            swal("Good job!", "Correct Answer!", "success");
                         } else {
                             console.log('wrong answer');
+                            swal("Oops!", "Sorry , wrong answer!", "error");
                         }
                     }
+
                     if (value == 2) {
                         if ($scope.answers.option2 == true) {
                             console.log('right answer');
+                            swal("Good job!", "Correct Answer!", "success");
                         } else {
                             console.log('wrong answer');
+                            swal("Oops!", "Sorry , wrong answer!", "error");
                         }
                     }
-                    if (value == 3) {
 
+                    if (value == 3) {
                         if ($scope.answers.option3 == true) {
                             console.log('right answer');
+                            swal("Good job!", "Correct Answer!", "success");
                         } else {
                             console.log('wrong answer');
+                            swal("Oops!", "Sorry , wrong answer!", "error");
                         }
-
                     }
+
                     if (value == 4) {
 
                         if ($scope.answers.option4 == true) {
                             console.log('right answer');
+                            swal("Good job!", "Correct Answer!", "success");
                         } else {
                             console.log('wrong answer');
+                            swal("Oops!", "Sorry , wrong answer!", "error");
                         }
                     }
                 }
