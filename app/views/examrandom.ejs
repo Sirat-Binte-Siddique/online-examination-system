@@ -67,9 +67,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <div id="starttime"></div>
-                            <div id="endtime"></div>
-                            <div id="showtime"></div>
+                            <h1>{{min}}:{{sec}}</h1>
                         </td>
                     </tr>
                 </table>
@@ -100,7 +98,7 @@
                 <button type="button" class="btn btn-default" ng-click="nextquestion(4)">{{ques.option4}}</button>
 
             </p>
-            <h1>{{min}}:{{sec}}</h1>
+
         </div>
 
 
@@ -159,33 +157,6 @@
 
 
 
-
-                //                $timeout(function() {
-                //                        $scope.sec = 60;
-                //                        $scope.min = 2;
-                //
-                //                        $scope.onTimeout = function() {
-                //
-                //                            if ($scope.sec == 0) {
-                //                                $scope.sec = 60;
-                //
-                //                                $scope.min--;
-                //                                if ($scope.min == -1) {
-                //                                    $scope.stop();
-                //                                    location.href = "reports";
-                //                                }
-                //                            } else {
-                //                                $scope.sec--;
-                //                            }
-                //                            mytimeout = $timeout($scope.onTimeout, 1000);
-                //                        });
-                //                    var mytimeout = $timeout($scope.onTimeout, 1000);
-                //                });
-                //
-                //
-                //            $scope.stop = function() {
-                //                $timeout.cancel(mytimeout);
-                //            };
                 $scope.sec = 60;
                 $scope.min = 2;
 
@@ -202,18 +173,14 @@
                     } else {
                         $scope.sec--;
                     }
-
-
                     mytimeout = $timeout($scope.onTimeout, 1000);
                 }
                 var mytimeout = $timeout($scope.onTimeout, 1000);
 
+
                 $scope.stop = function() {
                     $timeout.cancel(mytimeout);
                 }
-
-
-
 
 
 
