@@ -52,8 +52,9 @@
 
 
 
-<body ng-app="myApp" ng-controller="myCtrl" onload="f1()">
+<body ng-app="myApp" ng-controller="myCtrl">
     <% include sidebar/dashboard-sidebar %>
+
 
 
         <form id="form1" runat="server" style="margin-left:60px; margin-top:60px;">
@@ -74,6 +75,7 @@
                 </table>
             </div>
         </form>
+
 
 
 
@@ -109,146 +111,117 @@
 
             app.controller('myCtrl', function($scope, $http, $location, $timeout) {
 
-                        var valuee = $location.url();
-                        var onlyvalue = valuee.slice(1);
-                        console.log(onlyvalue);
-                        var refresh = function() {
-                            $http({
-                                method: 'POST',
-                                url: 'getarandomquestion',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                                },
-                                params: {
-                                    categories: onlyvalue
-                                }
-                            }).then(function successCallback(response) {
-                                if (response) {
-                                    //console.log(response);
-                                    if (response.data) {
-                                        $scope.ques = response.data;
-                                        $scope.answers = response.data.answers;
-
-                                        //console.log(response.data);
-
-                                    }
-                                } else {
-                                    console.log(response.data);
-                                }
-
-                            }, function errorCallback(response) {
-
-                                console.log(response);
-                            });
-
+                var valuee = $location.url();
+                var onlyvalue = valuee.slice(1);
+                console.log(onlyvalue);
+                var refresh = function() {
+                    $http({
+                        method: 'POST',
+                        url: 'getarandomquestion',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                        },
+                        params: {
+                            categories: onlyvalue
                         }
-                        refresh();
+                    }).then(function successCallback(response) {
+                        if (response) {
+                            //console.log(response);
+                            if (response.data) {
+                                $scope.ques = response.data;
+                                $scope.answers = response.data.answers;
 
+                                //console.log(response.data);
 
-
-
-
-
-                        $scope.nextquestion = function(value) {
-                            console.log("clicked done");
-                            $scope.checkanswer(value);
-
-                            refresh();
-
-
-
-
-                            //score count
-                            function getScore() {
-                                var score = 0;
-                                var numQuestions = 10;
-
-                                for (var i = 0; i < numQuestions; i++) {
-                                    if (userInput[i] == answers[i]) {
-                                        score += 1;
-                                    } else {
-                                        score += 0;
-                                    }
-
-                                }
-                                return score;
                             }
+                        } else {
+                            console.log(response.data);
+                        }
 
-                            function returnScore() {
-                                alert("Your score is " + getScore() + "/10");
-                            }
+                    }, function errorCallback(response) {
 
-                            //score count
-                        };
+                        console.log(response);
+                    });
 
-                        << << << < HEAD
-                        $timeout(function() { === === = >>> >>> > d0e89d30553fb817db8e915b6a1fae3c4a9dd463
-
-                            $scope.sec = 60;
-                            $scope.min = 2;
-
-                            $scope.onTimeout = function() {
-
-                                if ($scope.sec == 0) {
-                                    $scope.sec = 60;
-
-                                    $scope.min--;
-                                    if ($scope.min == -1) {
-                                        $scope.stop();
-                                        location.href = "reports";
-                                    }
-                                } else {
-                                    $scope.sec--;
-                                }
-
-
-                                mytimeout = $timeout($scope.onTimeout, 1000);
-                            }
-                            var mytimeout = $timeout($scope.onTimeout, 1000);
-
-                            $scope.stop = function() {
-                                $timeout.cancel(mytimeout);
-                            }
+                }
+                refresh();
 
 
 
 
 
 
-                            $scope.checkanswer = function(value) {
-                                if (value == 1) {
-                                    if ($scope.answers.option1 == true) {
-                                        console.log('right answer');
-                                    } else {
-                                        console.log('wrong answer');
-                                    }
-                                }
-                                if (value == 2) {
-                                    if ($scope.answers.option2 == true) {
-                                        console.log('right answer');
-                                    } else {
-                                        console.log('wrong answer');
-                                    }
-                                }
-                                if (value == 3) {
+                $scope.nextquestion = function(value) {
+                    console.log("clicked done");
+                    $scope.checkanswer(value);
+                    refresh();
+                };
 
-                                    if ($scope.answers.option3 == true) {
-                                        console.log('right answer');
-                                    } else {
-                                        console.log('wrong answer');
-                                    }
 
-                                }
-                                if (value == 4) {
 
-                                    if ($scope.answers.option4 == true) {
-                                        console.log('right answer');
-                                    } else {
-                                        console.log('wrong answer');
-                                    }
-                                }
-                            }
-                        });
+                $timeout(function() $scope.sec = 60; $scope.min = 2; $scope.onTimeout = function() {
+
+                    if ($scope.sec == 0) {
+                        $scope.sec = 60;
+
+                        $scope.min--;
+                        if ($scope.min == -1) {
+                            $scope.stop();
+                            location.href = "reports";
+                        }
+                    } else {
+                        $scope.sec--;
+                    }
+                    mytimeout = $timeout($scope.onTimeout, 1000);
+                });
+                var mytimeout = $timeout($scope.onTimeout, 1000);
+
+
+
+                $scope.stop = function() {
+                    $timeout.cancel(mytimeout);
+                }
+
+
+
+
+
+
+                $scope.checkanswer = function(value) {
+                    if (value == 1) {
+                        if ($scope.answers.option1 == true) {
+                            console.log('right answer');
+                        } else {
+                            console.log('wrong answer');
+                        }
+                    }
+                    if (value == 2) {
+                        if ($scope.answers.option2 == true) {
+                            console.log('right answer');
+                        } else {
+                            console.log('wrong answer');
+                        }
+                    }
+                    if (value == 3) {
+
+                        if ($scope.answers.option3 == true) {
+                            console.log('right answer');
+                        } else {
+                            console.log('wrong answer');
+                        }
+
+                    }
+                    if (value == 4) {
+
+                        if ($scope.answers.option4 == true) {
+                            console.log('right answer');
+                        } else {
+                            console.log('wrong answer');
+                        }
+                    }
+                }
+
+            });
 
         </script>
 
