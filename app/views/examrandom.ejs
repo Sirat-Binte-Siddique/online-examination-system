@@ -97,7 +97,7 @@
                 <button type="button" class="btn btn-default" ng-click="nextquestion(4)">{{ques.option4}}</button>
 
             </p>
-            {{min}}:{{sec}}
+            <h1>{{min}}:{{sec}}</h1>
         </div>
 
 
@@ -180,13 +180,6 @@
                     //score count
                 };
 
-                $timeout(function () {
-
-                    console.log('update with timeout fired');
-                    location.href = "reports";
-                }, 180000);
-
-
 
                 $scope.sec = 60;
                 $scope.min = 2;
@@ -195,10 +188,14 @@
 
                     if ($scope.sec == 0) {
                         $scope.sec = 60;
+
                         $scope.min--;
+                        if ($scope.min == -1) {
+                            $scope.stop();
+                            location.href = "reports";
+                        }
                     } else {
                         $scope.sec--;
-                        //console.log('sdfs');
                     }
 
 
