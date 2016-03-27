@@ -14,7 +14,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+
+
+
 
 </head>
 <style>
@@ -194,6 +202,7 @@
                     if (value == 1) {
                         if ($scope.answers.option1 == true) {
                             console.log('right answer');
+                            sweetAlert("right answer");
                         } else {
                             console.log('wrong answer');
                         }
@@ -201,6 +210,7 @@
                     if (value == 2) {
                         if ($scope.answers.option2 == true) {
                             console.log('right answer');
+                            sweetAlert("right answer");
                         } else {
                             console.log('wrong answer');
                         }
@@ -209,6 +219,7 @@
 
                         if ($scope.answers.option3 == true) {
                             console.log('right answer');
+                            sweetAlert("right answer");
                         } else {
                             console.log('wrong answer');
                         }
@@ -218,6 +229,7 @@
 
                         if ($scope.answers.option4 == true) {
                             console.log('right answer');
+                            sweetAlert("right answer");
                         } else {
                             console.log('wrong answer');
                         }
@@ -235,6 +247,7 @@
                         if ($scope.answers.option1 == true) {
                             $scope.score++;
                             console.log('score 1 added');
+
 
                         } else {
                             console.log('no score ');
