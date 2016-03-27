@@ -159,7 +159,37 @@
 
 
 
-                $timeout(function() $scope.sec = 60; $scope.min = 2; $scope.onTimeout = function() {
+
+                //                $timeout(function() {
+                //                        $scope.sec = 60;
+                //                        $scope.min = 2;
+                //
+                //                        $scope.onTimeout = function() {
+                //
+                //                            if ($scope.sec == 0) {
+                //                                $scope.sec = 60;
+                //
+                //                                $scope.min--;
+                //                                if ($scope.min == -1) {
+                //                                    $scope.stop();
+                //                                    location.href = "reports";
+                //                                }
+                //                            } else {
+                //                                $scope.sec--;
+                //                            }
+                //                            mytimeout = $timeout($scope.onTimeout, 1000);
+                //                        });
+                //                    var mytimeout = $timeout($scope.onTimeout, 1000);
+                //                });
+                //
+                //
+                //            $scope.stop = function() {
+                //                $timeout.cancel(mytimeout);
+                //            };
+                $scope.sec = 60;
+                $scope.min = 2;
+
+                $scope.onTimeout = function() {
 
                     if ($scope.sec == 0) {
                         $scope.sec = 60;
@@ -172,15 +202,16 @@
                     } else {
                         $scope.sec--;
                     }
+
+
                     mytimeout = $timeout($scope.onTimeout, 1000);
-                });
+                }
                 var mytimeout = $timeout($scope.onTimeout, 1000);
-
-
 
                 $scope.stop = function() {
                     $timeout.cancel(mytimeout);
                 }
+
 
 
 
