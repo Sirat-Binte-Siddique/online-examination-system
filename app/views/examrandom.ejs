@@ -98,8 +98,10 @@
                 <button type="button" class="btn btn-default" ng-click="nextquestion(4)">{{ques.option4}}</button>
 
             </p>
-
+            <h1>{{min}}:{{sec}}</h1>
         </div>
+
+
 
 
         <script>
@@ -107,154 +109,146 @@
 
             app.controller('myCtrl', function($scope, $http, $location, $timeout) {
 
-                var valuee = $location.url();
-                var onlyvalue = valuee.slice(1);
-                console.log(onlyvalue);
-                var refresh = function() {
-                    $http({
-                        method: 'POST',
-                        url: 'getarandomquestion',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                        },
-                        params: {
-                            categories: onlyvalue
+                        var valuee = $location.url();
+                        var onlyvalue = valuee.slice(1);
+                        console.log(onlyvalue);
+                        var refresh = function() {
+                            $http({
+                                method: 'POST',
+                                url: 'getarandomquestion',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                                },
+                                params: {
+                                    categories: onlyvalue
+                                }
+                            }).then(function successCallback(response) {
+                                if (response) {
+                                    //console.log(response);
+                                    if (response.data) {
+                                        $scope.ques = response.data;
+                                        $scope.answers = response.data.answers;
+
+                                        //console.log(response.data);
+
+                                    }
+                                } else {
+                                    console.log(response.data);
+                                }
+
+                            }, function errorCallback(response) {
+
+                                console.log(response);
+                            });
+
                         }
-                    }).then(function successCallback(response) {
-                        if (response) {
-                            //console.log(response);
-                            if (response.data) {
-                                $scope.ques = response.data;
-                                $scope.answers = response.data.answers;
+                        refresh();
 
-                                //console.log(response.data);
 
+
+
+
+
+                        $scope.nextquestion = function(value) {
+                            console.log("clicked done");
+                            $scope.checkanswer(value);
+
+                            refresh();
+
+
+
+
+                            //score count
+                            function getScore() {
+                                var score = 0;
+                                var numQuestions = 10;
+
+                                for (var i = 0; i < numQuestions; i++) {
+                                    if (userInput[i] == answers[i]) {
+                                        score += 1;
+                                    } else {
+                                        score += 0;
+                                    }
+
+                                }
+                                return score;
                             }
-                        } else {
-                            console.log(response.data);
-                        }
 
-                    }, function errorCallback(response) {
-
-                        console.log(response);
-                    });
-
-                }
-                refresh();
-
-
-
-
-
-
-                $scope.nextquestion = function(value) {
-                    console.log("clicked done");
-                    $scope.checkanswer(value);
-
-                    refresh();
-
-
-
-
-                    //score count
-                    function getScore() {
-                        var score = 0;
-                        var numQuestions = 10;
-
-                        for (var i = 0; i < numQuestions; i++) {
-                            if (userInput[i] == answers[i]) {
-                                score += 1;
-                            } else {
-                                score += 0;
+                            function returnScore() {
+                                alert("Your score is " + getScore() + "/10");
                             }
 
-                        }
-                        return score;
-                    }
+                            //score count
+                        };
 
-                    function returnScore() {
-                        alert("Your score is " + getScore() + "/10");
-                    }
+                        << << << < HEAD
+                        $timeout(function() { === === = >>> >>> > d0e89d30553fb817db8e915b6a1fae3c4a9dd463
 
-                    //score count
-                };
+                            $scope.sec = 60;
+                            $scope.min = 2;
 
-                $timeout(function() {
+                            $scope.onTimeout = function() {
 
-                    console.log('update with timeout fired');
-                    location.href = "reports";
-                }, 180000);
+                                if ($scope.sec == 0) {
+                                    $scope.sec = 60;
+
+                                    $scope.min--;
+                                    if ($scope.min == -1) {
+                                        $scope.stop();
+                                        location.href = "reports";
+                                    }
+                                } else {
+                                    $scope.sec--;
+                                }
 
 
-                $scope.checkanswer = function(value) {
-                    if (value == 1) {
-                        if ($scope.answers.option1 == true) {
-                            console.log('right answer');
-                        } else {
-                            console.log('wrong answer');
-                        }
-                    }
-                    if (value == 2) {
-                        if ($scope.answers.option2 == true) {
-                            console.log('right answer');
-                        } else {
-                            console.log('wrong answer');
-                        }
-                    }
-                    if (value == 3) {
+                                mytimeout = $timeout($scope.onTimeout, 1000);
+                            }
+                            var mytimeout = $timeout($scope.onTimeout, 1000);
 
-                        if ($scope.answers.option3 == true) {
-                            console.log('right answer');
-                        } else {
-                            console.log('wrong answer');
-                        }
-
-                    }
-                    if (value == 4) {
-
-                        if ($scope.answers.option4 == true) {
-                            console.log('right answer');
-                        } else {
-                            console.log('wrong answer');
-                        }
-                    }
-                }
-            });
+                            $scope.stop = function() {
+                                $timeout.cancel(mytimeout);
+                            }
 
 
 
-            //timer setup
-            var tim;
-            var min = 2;
-            var sec = 60;
-            var f = new Date();
 
-            function f1() {
-                f2();
-                document.getElementById("starttime").innerHTML = "Your started your Exam at " + f.getHours() + ":" + f.getMinutes();
-            }
 
-            function f2() {
-                if (parseInt(sec) > 0) {
-                    sec = parseInt(sec) - 1;
-                    document.getElementById("showtime").innerHTML = "Your Left Time  is :" + min + " Minutes ," + sec + " Seconds";
-                    tim = setTimeout("f2()", 1000);
-                } else {
-                    if (parseInt(sec) == 0) {
-                        min = parseInt(min) - 1;
-                        if (parseInt(min) == 0) {
-                            clearTimeout(tim);
-                            //location.href = "reports";
-                        } else {
-                            sec = 60;
-                            document.getElementById("showtime").innerHTML = "Your Left Time  is :" + min + " Minutes ," + sec + " Seconds";
-                            tim = setTimeout("f2()", 1000);
-                        }
-                    }
 
-                }
-            }
-            //timer setup
+                            $scope.checkanswer = function(value) {
+                                if (value == 1) {
+                                    if ($scope.answers.option1 == true) {
+                                        console.log('right answer');
+                                    } else {
+                                        console.log('wrong answer');
+                                    }
+                                }
+                                if (value == 2) {
+                                    if ($scope.answers.option2 == true) {
+                                        console.log('right answer');
+                                    } else {
+                                        console.log('wrong answer');
+                                    }
+                                }
+                                if (value == 3) {
+
+                                    if ($scope.answers.option3 == true) {
+                                        console.log('right answer');
+                                    } else {
+                                        console.log('wrong answer');
+                                    }
+
+                                }
+                                if (value == 4) {
+
+                                    if ($scope.answers.option4 == true) {
+                                        console.log('right answer');
+                                    } else {
+                                        console.log('wrong answer');
+                                    }
+                                }
+                            }
+                        });
 
         </script>
 
