@@ -151,15 +151,20 @@
 
                 $scope.nextquestion = function(value) {
                     console.log("clicked done");
+
                     $scope.checkanswer(value);
+
+                    $scope.score(value);
+
                     refresh();
                 };
 
 
 
+
+                // timer
                 $scope.sec = 60;
                 $scope.min = 2;
-
                 $scope.onTimeout = function() {
 
                     if ($scope.sec == 0) {
@@ -184,7 +189,7 @@
 
 
 
-
+                //checkanswer
                 $scope.checkanswer = function(value) {
                     if (value == 1) {
                         if ($scope.answers.option1 == true) {
@@ -218,6 +223,27 @@
                         }
                     }
                 }
+
+
+
+
+
+                //checkscore
+                $scope.score = 0;
+                $scope.score = function(value) {
+                    if ($scope.checkanswer == true) {
+                        $scope.score++;
+                        console.log('score 1 add');
+
+                    } else {
+                        console.log('no score ');
+                    }
+                }
+
+
+
+
+
 
             });
 
