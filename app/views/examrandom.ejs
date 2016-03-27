@@ -82,22 +82,21 @@
             <h4> your topic : {{ques.categories}} </h4>
             <h2> {{ques.question}} </h2>
             <p>
-                <button type="button" class="btn btn-default">{{ques.option1}}</button>
+                <button type="button" class="btn btn-default" ng-click="nextquestion(1)">{{ques.option1}}</button>
 
             </p>
             <p>
-                <button type="button" class="btn btn-default">{{ques.option1}}</button>
+                <button type="button" class="btn btn-default" ng-click="nextquestion(2)">{{ques.option2}}</button>
 
             </p>
             <p>
-                <button type="button" class="btn btn-default">{{ques.option1}}</button>
+                <button type="button" class="btn btn-default" ng-click="nextquestion(3)">{{ques.option3}}</button>
 
             </p>
             <p>
-                <button type="button" class="btn btn-default">{{ques.option1}}</button>
+                <button type="button" class="btn btn-default" ng-click="nextquestion(4)">{{ques.option4}}</button>
 
             </p>
-            <button ng-click="nextquestion()" type="submit" class="btn btn-success"> submit</button>
 
         </div>
 
@@ -122,12 +121,12 @@
                         }
                     }).then(function successCallback(response) {
                         if (response) {
-                            console.log(response);
+                            //console.log(response);
                             if (response.data) {
                                 $scope.ques = response.data;
                                 $scope.answers = response.data.answers;
 
-                                console.log(response.data);
+                                //console.log(response.data);
 
                             }
                         } else {
@@ -147,8 +146,10 @@
 
 
 
-                $scope.nextquestion = function (questions) {
+                $scope.nextquestion = function (value) {
                     console.log("clicked done");
+                    $scope.checkanswer(value);
+
                     refresh();
 
 
@@ -175,17 +176,43 @@
                     }
 
                     //score count
-
-
-
                 };
 
 
+                $scope.checkanswer = function (value) {
+                    if (value == 1) {
+                        if ($scope.answers.option1 == true) {
+                            console.log('right answer');
+                        } else {
+                            console.log('wrong answer');
+                        }
+                    }
+                    if (value == 2) {
+                        if ($scope.answers.option2 == true) {
+                            console.log('right answer');
+                        } else {
+                            console.log('wrong answer');
+                        }
+                    }
+                    if (value == 3) {
+
+                        if ($scope.answers.option3 == true) {
+                            console.log('right answer');
+                        } else {
+                            console.log('wrong answer');
+                        }
+
+                    }
+                    if (value == 4) {
+
+                        if ($scope.answers.option4 == true) {
+                            console.log('right answer');
+                        } else {
+                            console.log('wrong answer');
+                        }
+                    }
+                }
             });
-
-
-
-
 
 
 
