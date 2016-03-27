@@ -171,34 +171,47 @@
 
                 //for add question 
                 $scope.addquestion = function(questions) {
-                    console.log(questions);
-                    var newquestions = {
-                        categories: questions.categories,
-                        question: questions.question,
-                        option1: questions.option1,
-                        option2: questions.option2,
-                        option3: questions.option3,
-                        option4: questions.option4,
-                        answers: {
-                            option1: questions.op1,
-                            option2: questions.op2,
-                            option3: questions.op3,
-                            option4: questions.op4
+                    swal({
+                        title: "really !!!",
+                        text: "Are you sure to add this question?",
+                        type: "warning",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        confirmButtonText: "Yes !",
+                        confirmButtonColor: "#ec6c62"
+                    }, function() {
+                        console.log(questions);
+                        var newquestions = {
+                            categories: questions.categories,
+                            question: questions.question,
+                            option1: questions.option1,
+                            option2: questions.option2,
+                            option3: questions.option3,
+                            option4: questions.option4,
+                            answers: {
+                                option1: questions.op1,
+                                option2: questions.op2,
+                                option3: questions.op3,
+                                option4: questions.op4
+                            }
                         }
-                    }
-
-                    $http({
-                        url: '/addnewquestion',
-                        method: "POST",
-                        data: newquestions
-                    }).then(function(response) {
-                        console.log('ijijiji');
-                        refresh();
-                    }, function(response) { // optional
-                        // failed
+                        $.ajax({
+                                url: '/addnewquestion',
+                                method: "POST",
+                                data: newquestions
+                            })
+                            .done(function(response) {
+                                swal("Your Question was Added successfully !");
+                                console.log(response.data);
+                                refresh();
+                            })
+                            .error(function(data) {
+                                swal("Oops", "We couldn't connect to the server!", "error");
+                            });
                     });
                 };
             });
+
 
 
 
