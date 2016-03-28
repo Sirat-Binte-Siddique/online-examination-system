@@ -9,6 +9,20 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link href="css/dashboard-sidebar.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <link href="css/jquery.steps.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="Controller/UserController.js"></script>
+
+    <link rel="stylesheet" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
+    <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.css">
+    <!--    <link rel="stylesheet" href="/css/Custom-Loading.css">-->
+    <link rel="stylesheet" href="/css/sidebar_menu_showhide.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -20,28 +34,277 @@
 
     <% include sidebar/dashboard-sidebar.ejs %>
 
-
-
         <div class="container-fluid" style="margin-left:100px; margin-top:100px;">
-            your profile will here
+
+            <div id="loadingcustom">
+                <% include partials/loadingCustom.ejs %>
+            </div>
+
+
+
+            <div class="container-fluid">
+                <div class="row  custom-margin-top">
+                    <div class="col-md-2">
+                        <div class="panel panel-primary text-center">
+                            <div class="panel-heading">PROFILE DETAIL</div>
+                            <div class="panel-body">
+
+                                <div class="form-group">
+                                    <img class="profile-pic" src="http://placehold.it/150" class="img-thumbnail" style="margin-right:0px;" height="150" width="130">
+                                    <div class="upload-button">Upload Image</div>
+                                    <input class="file-upload" type="file" accept="image/*" />
+                                </div>
+
+                                <hr>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="">
+
+
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">Detail</div>
+                                <div class="panel-body">
+
+
+                                    <div class="tabbable">
+
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tab1" data-toggle="tab">Add Info</a></li>
+                                            <li><a href="#tab2" data-toggle="tab">view</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab1">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                                                <form class="form-horizontal" id="AddDriver-form">
+                                                                    <div class="control-group">
+                                                                        <div class="input-group input-group-sm">
+                                                                            <span class="input-group-addon">Full name</span>
+                                                                            <input id="drivername" type="text" required="" name="fullname" class="form-control input-md well  well-sm drivername" minlength="3" aria-invalid="true">
+                                                                        </div>
+                                                                        <p class="help-block"></p>
+                                                                    </div>
+                                                                    <div class=" control-group">
+                                                                        <div class="input-group input-group-sm">
+                                                                            <span class="input-group-addon">Email</span>
+                                                                            <input type="text" class="form-control input-md well  well-sm driveremail" id="driveremail">
+                                                                        </div>
+                                                                        <p class="help-block"></p>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <div class="input-group input-group-sm">
+                                                                            <label for="sel1" class="input-group-addon">Gender</label>
+                                                                            <select class="form-control drivergender" id="drivergender" id="sel1">
+                                                                                <option>Male</option>
+                                                                                <option>Female</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <p class="help-block"></p>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <div class="input-group input-group-sm">
+                                                                            <span class="input-group-addon">Age</span>
+                                                                            <input type="text" id="driverage" class="form-control input-md well  well-sm driverage">
+                                                                        </div>
+                                                                        <p class="help-block"></p>
+                                                                    </div>
+                                                                    <div class="control-group">
+                                                                        <div class="input-group input-group-sm">
+                                                                            <span class="input-group-addon">Phone Number</span>
+                                                                            <input type="number" class="form-control" id="phone" name="phone" minlength="8" maxlength="15">
+                                                                        </div>
+                                                                        <p class="help-block"></p>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 text-left">
+                                                                        </div>
+                                                                        <div class="col-md-8 text-right">
+                                                                            <button class="btn btn-default btn-lg btn-info savethisdriver">Add my info</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="tab2">
+
+                                                <div class="panel panel-primary ">
+                                                    <div class="panel-body">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <h5>Full name</h5></td>
+                                                                    <td>
+                                                                        <h4><a href="#" id="fullnamep" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click fullname"> </a></h4>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <h5>Email</h5></td>
+                                                                    <td>
+                                                                        <h4><a href="#" id="driveremail" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click driveremail"> </a></h4>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <h5>Gender</h5></td>
+                                                                    <td>
+                                                                        <h4>
+				<a id="gender" data-type="select" data-pk="1" data-title="Select status" class="editable editable-click gender"></a>
+				</h4>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <h5>Age</h5></td>
+                                                                    <td>
+                                                                        <h4><a href="#" id="age" data-type="select" data-pk="1" data-title="age" class="editable editable-click age"></a></h4>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <h5>Phone Number</h5></td>
+                                                                    <td>
+                                                                        <h4><a href="" id="phone" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click phone"> </a></h4>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <style>
+                                                    #datepicker .input-group-addon {
+                                                        visibility: hidden;
+                                                    }
+
+                                                </style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
 
+        <script>
+            setTimeout(function() {
+                $('#loadingcustom').fadeOut('fast');
+            }, 3000);
+
+
+
+
+            $(document).ready(function() {
+
+
+
+                var readURL = function(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            $('.profile-pic').attr('src', e.target.result);
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+
+                $(".file-upload").on('change', function() {
+                    readURL(this);
+                });
+                $(".upload-button").on('click', function() {
+                    $(".file-upload").click();
+                });
 
 
 
 
 
 
+
+
+
+                drivername = "";
+                driveremail = "";
+                drivergender = "";
+                driverage = "";
+                driverphone = "";
+
+
+                $(".savethisdriver").mouseup(function() {
+                    $('#loadingcustom').show();
+                    $('.savethisdriver').hide();
+
+                    var myInterval = setInterval(function() {
+                        var userData = {
+                            "drivername": $("#drivername").val(),
+                            "driveremail": $(".driveremail").val(),
+                            "drivergender": $("#drivergender").val(),
+                            "driverage": $(".driverage").val(),
+                            "driverphone": $("#driverphone").val()
+
+                        };
+                        $.ajax({
+                            type: "POST",
+                            url: "/showstudentinfo/",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            data: JSON.stringify(userData),
+                            success: function(data) {
+                                console.log(userData);
+                                $('#loadingcustom').hide();
+                                clearInterval(myInterval);
+
+                                swal({
+                                    title: "Success",
+                                    text: "New driver added",
+                                    type: "success",
+                                    showCancelButton: false,
+                                    confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "OK",
+                                    closeOnConfirm: true
+                                }, function() {
+
+
+                                });
+                            }
+                        });
+                    }, 3000);
+                });
+            });
+
+        </script>
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/dashboard.js"></script>
-        <!--
         <style CSS>
-            @import url("https://bootswatch.com/flatly/bootstrap.min.css");
+            @import url("http://bootswatch.com/flatly/bootstrap.min.css");
+
         </style>
--->
+
 </body>
 
 </html>

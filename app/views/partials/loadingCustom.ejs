@@ -1,0 +1,120 @@
+<div class="blackoverlay">
+    <div class="loadingcenter">
+
+
+        <div class="loading">
+            <div class="dot"></div>
+            <div class="dot2"></div>
+        </div>
+
+        <h1 class='loadingtext'>Loading.....</h1>
+
+
+
+
+    </div>
+
+</div>
+
+<style>
+    .blackoverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.85);
+        background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent\9;
+        /* ie fallback png background image */
+        z-index: 9999;
+        color: white;
+    }
+    
+    .loadingtext {
+        margin-bottom: -20vw;
+    }
+    
+    .loadingcenter {
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        /* Safari, Opera, and Chrome */
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+        /* Firefox */
+        display: -moz-box;
+        -moz-box-pack: center!important;
+        -moz-box-align: center!important;
+        /* Internet Explorer 10 */
+        display: -ms-flexbox;
+        -ms-flex-pack: center;
+        -ms-flex-align: center;
+    }
+    
+    .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        transform: translate(-50%, -50%);
+    }
+    
+    .loading .dot {
+        position: absolute;
+        border-radius: 50%;
+        left: 1px;
+        top: 1px;
+        width: 18px;
+        height: 18px;
+        background: white;
+        animation: spin 2.5s 0s infinite both;
+    }
+    
+    .loading .dot2 {
+        position: absolute;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        background: white;
+        animation: spin2 2.5s 0s infinite both;
+    }
+    
+    @keyframes spin {
+        0%,
+        100% {
+            box-shadow: 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white;
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        25%,
+        75% {
+            box-shadow: 28px 0 0 white, -28px 0 0 white, 0 28px 0 white, 0 -28px 0 white, 20px -20px 0 white, 20px 20px 0 white, -20px -20px 0 white, -20px 20px 0 white;
+        }
+        100% {
+            transform: rotate(360deg);
+            box-shadow: 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white;
+        }
+    }
+    
+    @keyframes spin2 {
+        0%,
+        100% {
+            box-shadow: 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white;
+        }
+        50% {
+            transform: rotate(-180deg);
+        }
+        25%,
+        75% {
+            box-shadow: 52px 0 0 white, -52px 0 0 white, 0 52px 0 white, 0 -52px 0 white, 38px -38px 0 white, 38px 38px 0 white, -38px -38px 0 white, -38px 38px 0 white;
+            background: transparent;
+        }
+        100% {
+            transform: rotate(-360deg);
+            box-shadow: 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white, 0 0 0 white;
+        }
+    }
+</style>

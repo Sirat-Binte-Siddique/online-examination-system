@@ -125,7 +125,7 @@ nav.main-menu li.active>a,
 }
 .navbar.navbar-custom.navbar-fixed-top {
     background-color: #2A3843 !important;
-    /*    height: 60px;*/
+    height: 59px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
