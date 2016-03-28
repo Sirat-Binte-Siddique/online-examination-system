@@ -19,6 +19,53 @@
 </head>
 
 
+<style CSS>
+    body {
+        background: #F9F9F9;
+    }
+    
+    h2 {
+        text-align: center;
+        margin-top: 30px;
+    }
+    
+    h4 {
+        text-align: center;
+        margin-top: 30px;
+        text-decoration: underline;
+        color: #000cff;
+    }
+    
+    h4:hover {
+        cursor: pointer;
+    }
+    
+    .table_ {
+        margin: 20px 0;
+        margin-left: 26%;
+        font-size: 1.5em;
+        max-width: 600px;
+        text-align: left;
+        border: 1px solid #000;
+        background: #fff;
+    }
+    
+    .table_ table {
+        width: 100%;
+        border-spacing: 4px;
+        border-collapse: separate;
+    }
+    
+    .table_ td {
+        width: 42%;
+        border: 1px solid #333;
+        padding-left: .51em;
+    }
+
+</style>
+
+
+
 <body ng-app="myApp" ng-controller="myCtrl">
 
     <% include sidebar/dashboard-sidebar.ejs %>
@@ -31,7 +78,7 @@
                 <table>
                     <tr>
                         <td class="table_td">Quiz Topic:</td>
-                        <td> {{ques.categories}} </td>
+                        <td> </td>
                     </tr>
                     <tr>
                         <td>Total Time :</td>
@@ -58,53 +105,12 @@
         <script src="js/dashboard.js"></script>
         <script>
             var app = angular.module('myApp', []);
-            app.controller('myCtrl', function() {});
+            app.controller('myCtrl', function($scope, $http, $location) {
+
+            });
 
         </script>
-        <style CSS>
-            body {
-                background: #F9F9F9;
-            }
-            
-            h2 {
-                text-align: center;
-                margin-top: 30px;
-            }
-            
-            h4 {
-                text-align: center;
-                margin-top: 30px;
-                text-decoration: underline;
-                color: #000cff;
-            }
-            
-            h4:hover {
-                cursor: pointer;
-            }
-            
-            .table_ {
-                margin: 20px 0;
-                margin-left: 26%;
-                font-size: 1.5em;
-                max-width: 600px;
-                text-align: left;
-                border: 1px solid #000;
-                background: #fff;
-            }
-            
-            .table_ table {
-                width: 100%;
-                border-spacing: 4px;
-                border-collapse: separate;
-            }
-            
-            .table_ td {
-                width: 42%;
-                border: 1px solid #333;
-                padding-left: .51em;
-            }
 
-        </style>
 </body>
 
 </html>
