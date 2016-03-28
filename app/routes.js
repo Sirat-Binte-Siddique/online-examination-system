@@ -1,5 +1,7 @@
 var User = require('../app/models/user');
 var Question = require('../app/models/question');
+var Driver = require('../app/models/studentprofile');
+
 
 module.exports = function (app, passport) {
     app.get('/', function (req, res) {
@@ -242,10 +244,6 @@ module.exports = function (app, passport) {
 
 
 
-
-
-
-
     // profile SECTION =========================
     app.get('/profile', isLoggedIn, function (req, res) {
         res.render('profile.ejs', {
@@ -253,12 +251,42 @@ module.exports = function (app, passport) {
         });
     });
 
-    // examrecords SECTION =========================
-    //    app.get('/examrecords', isLoggedIn, function (req, res) {
-    //        res.render('examrecords.ejs', {
-    //            user: req.user
-    //        });
-    //    });
+    // add student information =========================
+    app.post('/sinfoadd', function (req, res) {
+        var newDriver = new Driver(req.body);
+        console.log(req.body);
+
+        newDriver.save(function (err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+
+                console.log("info Add successfully");
+                res.json(data);
+
+            }
+        });
+    });
+
+
+
+    // student info show =========================
+    app.get('/showstudentinfo', function (req, res) {
+        Driver.find({}, function (err, data) {
+            if (err) {
+                return (err);
+            } else {
+                res.json(data);
+            }
+        });
+    });
+
+
+
+
+
+
+
 
 
     // reports SECTION =========================
