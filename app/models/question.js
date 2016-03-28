@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var questionSchema = mongoose.Schema({
 
     categories: String,
+    section: String,
     question: String,
 
     option1: String,

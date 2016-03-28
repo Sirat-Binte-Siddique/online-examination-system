@@ -26,8 +26,7 @@
 
 
         <div class="container text-center" style="margin-left:60px; margin-top:80px; margin-right:50px;">
-            <h4>Choose Examination Categories: </h4>
-
+            <h3>Choose Examination Categories: </h3>
             <select class="form-control" ng-submit="ques.categories" id="category">
                 <option value="" id=""></option>
                 <option value="english" id="categories">english</option>
@@ -36,7 +35,18 @@
                 <option value="computer" id="categories">computer</option>
             </select>
             <br>
+
+            <h4>Choose section: </h4>
+            <select class="form-control" ng-submit="section.sections" id="section">
+                <option value="" id=""></option>
+                <option value="day" id="sections">Day</option>
+                <option value="eve" id="sections">Evening</option>
+            </select>
+            <br>
             <a ng-click="btnclicked()" class="btn btn-success"> Save & Start </a>
+
+
+
 
 
         </div>
@@ -55,6 +65,16 @@
 
             $scope.selectedValue = val;
             console.log($scope.selectedValue);
+        });
+
+
+
+        $('#section').change(function() {
+            //console.log($(this).val());
+            var val = $(this).val();
+
+            $scope.selectedsection = val;
+            console.log($scope.selectedsection);
         });
 
 
