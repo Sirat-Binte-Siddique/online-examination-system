@@ -32,9 +32,19 @@
 <body>
     <% include sidebar/dashboard-admin-sidaber.ejs %>
 
+        <div id="loadingcustom">
+            <% include partials/loadingCustom.ejs %>
+        </div>
 
 
 
 </body>
+
+<script>
+    setTimeout(function() {
+        $('#loadingcustom').fadeOut('fast');
+    }, 2000);
+
+</script>
 
 </html>
