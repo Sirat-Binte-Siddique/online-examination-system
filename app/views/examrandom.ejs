@@ -73,12 +73,12 @@
         <script>
             var app = angular.module('myApp', []);
 
-            app.controller('myCtrl', function($scope, $http, $location, $timeout) {
+            app.controller('myCtrl', function ($scope, $http, $location, $timeout) {
 
                 var valuee = $location.url();
                 var onlyvalue = valuee.slice(1);
                 console.log(onlyvalue);
-                var refresh = function() {
+                var refresh = function () {
                     $http({
                         method: 'POST',
                         url: 'getarandomquestion',
@@ -110,10 +110,10 @@
 
 
 
-                $scope.nextquestion = function(value) {
+                $scope.nextquestion = function (value) {
                     console.log("clicked done");
                     $scope.checkanswer(value);
-                    $scope.score(value);
+                    $scope.scoreFunction(value);
                     refresh();
                 };
 
@@ -123,7 +123,7 @@
                 // timer
                 $scope.sec = 60;
                 $scope.min = 2;
-                $scope.onTimeout = function() {
+                $scope.onTimeout = function () {
 
                     if ($scope.sec == 0) {
                         $scope.sec = 60;
@@ -141,7 +141,7 @@
                 var mytimeout = $timeout($scope.onTimeout, 1000);
 
 
-                $scope.stop = function() {
+                $scope.stop = function () {
                     $timeout.cancel(mytimeout);
                 }
 
@@ -164,7 +164,7 @@
 
 
                 //check right answer
-                $scope.checkanswer = function(value) {
+                $scope.checkanswer = function (value) {
 
                     if (value == 1) {
                         if ($scope.answers.option1 == true) {
@@ -214,7 +214,7 @@
 
                 //checkscore
                 $scope.score = 0;
-                $scope.score = function(value) {
+                $scope.scoreFunction = function (value) {
                     if (value == 1) {
                         if ($scope.answers.option1 == true) {
                             $scope.score++;
@@ -250,10 +250,11 @@
                             console.log('no score ');
                         }
                     }
+
+                    console.log('total score' + $scope.score);
                 }
 
             });
-
         </script>
 
 </body>
