@@ -18,16 +18,86 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-
-    <style>
-        body {
-            padding-top: 80px;
-            word-wrap: break-word;
-        }
-
-    </style>
 </head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .section_1 {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        color: #000;
+        border-radius: 5px;
+    }
+    
+    .section_2 {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        color: #000;
+        border-radius: 5px;
+    }
+    
+    .header {
+        background: #F5F5F5;
+        border: 1px solid #ccc;
+        border-radius: 5px 5px 0px 0px;
+    }
+    
+    .section_2 .header {
+        background: #F5F5F5;
+    }
+    
+    .header h4 {
+        padding-left: 15px;
+    }
+    
+    .row_border {
+        border: 1px solid #999;
+        border-radius: 5px;
+        margin: 15px 0 25px;
+        padding: 15px;
+        cursor: pointer;
+    }
+    
+    .row_border li.left {
+        float: left;
+    }
+    
+    .row_border li.left i {
+        font-size: 7rem;
+    }
+    
+    .row_border li.right {
+        text-align: right;
+        font-size: 5rem;
+        padding-right: 10px;
+    }
+    
+    .section_1 ul li,
+    .section_2 ul li {
+        text-decoration: none;
+        list-style: none;
+    }
+    
+    .section_1 ul,
+    .section_2 ul {
+        padding: 0;
+    }
+    
+    .section_1 a,
+    .section_2 a {
+        text-decoration: none;
+    }
+    
+    .row_border h3 {
+        text-align: center;
+    }
+
+</style>
+
 
 <body>
     <% include sidebar/dashboard-admin-sidaber.ejs %>
@@ -38,7 +108,84 @@
 
 
 
+        <!--
+        <div class="container" style="margin-left:100px; margin-top:50px;">
+            <div class="container dashboard">
+                <div class="row">
+                    <div class="col-md-12 section_1">
+                        <div class="row">
+                            <div class="header">
+                                <h4><i class="fa fa-bar-chart"></i> Student Dashboard </h4>
+                            </div>
+
+                            <div class="col-md-3">
+                                <a href="">
+                                    <div class="row_border">
+                                        <ul>
+                                            <li class="left"><i class="fa fa-bookmark-o"></i></li>
+                                            <li class="right">12</li>
+                                        </ul>
+                                        <h3>Practise </h3>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <div class="row_border">
+                                        <ul>
+                                            <li class="left"><i class="fa fa-sitemap"></i></li>
+                                            <li class="right">1</li>
+                                        </ul>
+                                        <h3>Categories </h3>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <div class="row_border">
+                                        <ul>
+                                            <li class="left"><i class="fa fa-book"></i></li>
+                                            <li class="right">0</li>
+                                        </ul>
+                                        <h3>Exams </h3>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <a href="#">
+                                    <div class="row_border">
+                                        <ul>
+                                            <li class="left"><i class="fa fa-envelope-o"></i></li>
+                                            <li class="right">0</li>
+                                        </ul>
+                                        <h3>result</h3>
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
+
+
 </body>
+
+
+
+
+
+
+
+
+
 
 <script>
     setTimeout(function() {
