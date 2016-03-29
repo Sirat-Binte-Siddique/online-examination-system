@@ -44,9 +44,10 @@
 
 
         <div class="container text-center" style="margin-left:60px; margin-top:30px; margin-right:50px;">
+            <h1> Your score is :<span> {{score}} </span></h1>
 
-            <h4> your topic : {{ques.categories}} </h4>
-            <h4> section : {{section.sections}} </h4>
+            <h3> Your topic : {{ques.categories}} </h3>
+            <!--            <h4> section : {{section.sections}} </h4>-->
             <h2> {{ques.question}} </h2>
             <p>
                 <button type="button" class="btn btn-default" ng-click="nextquestion(1)">{{ques.option1}}</button>
@@ -73,12 +74,12 @@
         <script>
             var app = angular.module('myApp', []);
 
-            app.controller('myCtrl', function ($scope, $http, $location, $timeout) {
+            app.controller('myCtrl', function($scope, $http, $location, $timeout) {
 
                 var valuee = $location.url();
                 var onlyvalue = valuee.slice(1);
                 console.log(onlyvalue);
-                var refresh = function () {
+                var refresh = function() {
                     $http({
                         method: 'POST',
                         url: 'getarandomquestion',
@@ -110,7 +111,7 @@
 
 
 
-                $scope.nextquestion = function (value) {
+                $scope.nextquestion = function(value) {
                     console.log("clicked done");
                     $scope.checkanswer(value);
                     $scope.scoreFunction(value);
@@ -119,11 +120,22 @@
 
 
 
+                //                var maxques = $scope.nextquestion;
+                //                $scope.maxquestion = function() {
+                //                    if (maxques > 0; maxques <= 10; maxques++ ) {
+                //                        location.href = "reports";
+                //                    }
+                //                }
+
+
+
+
+
 
                 // timer
                 $scope.sec = 60;
                 $scope.min = 2;
-                $scope.onTimeout = function () {
+                $scope.onTimeout = function() {
 
                     if ($scope.sec == 0) {
                         $scope.sec = 60;
@@ -140,12 +152,31 @@
                 }
                 var mytimeout = $timeout($scope.onTimeout, 1000);
 
-
-                $scope.stop = function () {
+                $scope.stop = function() {
                     $timeout.cancel(mytimeout);
                 }
 
 
+
+
+                //                $scope.maxques = 0;
+                //                $scope.questionout = function() {
+                //
+                //                    if ($scope.maxques >0) {
+                //                        $scope.maxques--;
+                //                        if ($scope.maxques == -1) {
+                //                            $scope.stop();
+                //                            location.href = "reports";
+                //                        }
+                //                    }
+                //                    myquestionout = $timeout($scope.questionout, 1000);
+                //                }
+                //                var myquestionout = $timeout($scope.questionout, 1000);
+                //
+                //
+                //                $scope.stop = function() {
+                //                    $timeout.cancel(myquestionout);
+                //                }
 
 
 
@@ -159,17 +190,13 @@
 
 
 
-
-
-
-
                 //check right answer
-                $scope.checkanswer = function (value) {
+                $scope.checkanswer = function(value) {
 
                     if (value == 1) {
                         if ($scope.answers.option1 == true) {
                             console.log('right answer');
-                            swal("Good job!", "Correct Answer!", "success");
+                            swal("Good job!", "Correct Answer & score added!", "success");
                         } else {
                             console.log('wrong answer');
                             swal("Oops!", "Sorry , wrong answer!", "error");
@@ -179,7 +206,7 @@
                     if (value == 2) {
                         if ($scope.answers.option2 == true) {
                             console.log('right answer');
-                            swal("Good job!", "Correct Answer!", "success");
+                            swal("Good job!", "Correct Answer & score added!", "success");
                         } else {
                             console.log('wrong answer');
                             swal("Oops!", "Sorry , wrong answer!", "error");
@@ -189,7 +216,7 @@
                     if (value == 3) {
                         if ($scope.answers.option3 == true) {
                             console.log('right answer');
-                            swal("Good job!", "Correct Answer!", "success");
+                            swal("Good job!", "Correct Answer & score added!", "success");
                         } else {
                             console.log('wrong answer');
                             swal("Oops!", "Sorry , wrong answer!", "error");
@@ -200,7 +227,7 @@
 
                         if ($scope.answers.option4 == true) {
                             console.log('right answer');
-                            swal("Good job!", "Correct Answer!", "success");
+                            swal("Good job!", "Correct Answer & score added!", "success");
                         } else {
                             console.log('wrong answer');
                             swal("Oops!", "Sorry , wrong answer!", "error");
@@ -214,11 +241,10 @@
 
                 //checkscore
                 $scope.score = 0;
-                $scope.scoreFunction = function (value) {
+                $scope.scoreFunction = function(value) {
                     if (value == 1) {
                         if ($scope.answers.option1 == true) {
                             $scope.score++;
-                            console.log('score 1 added');
                         } else {
                             console.log('no score ');
                         }
@@ -226,7 +252,6 @@
                     if (value == 2) {
                         if ($scope.answers.option2 == true) {
                             $scope.score++;
-                            console.log('score 1 added');
 
                         } else {
                             console.log('no score ');
@@ -235,7 +260,6 @@
                     if (value == 3) {
                         if ($scope.answers.option3 == true) {
                             $scope.score++;
-                            console.log('score 1 added');
 
                         } else {
                             console.log('no score ');
@@ -244,7 +268,6 @@
                     if (value == 4) {
                         if ($scope.answers.option4 == true) {
                             $scope.score++;
-                            console.log('score 1 added');
 
                         } else {
                             console.log('no score ');
@@ -255,6 +278,7 @@
                 }
 
             });
+
         </script>
 
 </body>
