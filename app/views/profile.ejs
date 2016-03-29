@@ -79,25 +79,25 @@
                                                         <div class="row">
                                                             <div class="col-md-12 col-sm-12 col-xs-12">
 
-                                                                <form class="form-horizontal" id="AddDriver-form">
+                                                                <form class="form-horizontal" id="AddStudent-form">
                                                                     <div class="control-group">
                                                                         <div class="input-group input-group-sm">
                                                                             <span class="input-group-addon">Full name</span>
-                                                                            <input id="drivername" type="text" ng-model="students.drivername" name="fullname" class="form-control input-md well  well-sm drivername" minlength="3" aria-invalid="true">
+                                                                            <input id="studentname" type="text" ng-model="students.studentname" name="fullname" class="form-control input-md well  well-sm studentname" minlength="3" aria-invalid="true">
                                                                         </div>
                                                                         <p class="help-block"></p>
                                                                     </div>
                                                                     <div class=" control-group">
                                                                         <div class="input-group input-group-sm">
                                                                             <span class="input-group-addon">Email</span>
-                                                                            <input type="text" ng-model="students.driveremail" class="form-control input-md well  well-sm driveremail" id="driveremail">
+                                                                            <input type="text" ng-model="students.studentemail" class="form-control input-md well  well-sm studentemail" id="studentemail">
                                                                         </div>
                                                                         <p class="help-block"></p>
                                                                     </div>
                                                                     <div class="control-group">
                                                                         <div class="input-group input-group-sm">
                                                                             <label for="sel1" class="input-group-addon">Gender</label>
-                                                                            <select class="form-control drivergender" ng-model="students.drivergender" id="drivergender" id="sel1">
+                                                                            <select class="form-control studentgender" ng-model="students.studentgender" id="studentgender" id="sel1">
                                                                                 <option>Male</option>
                                                                                 <option>Female</option>
                                                                             </select>
@@ -107,14 +107,14 @@
                                                                     <div class="control-group">
                                                                         <div class="input-group input-group-sm">
                                                                             <span class="input-group-addon">Age</span>
-                                                                            <input type="text" ng-model="students.driverage" id="driverage" class="form-control input-md well  well-sm driverage">
+                                                                            <input type="text" ng-model="students.studentage" id="studentage" class="form-control input-md well  well-sm studentage">
                                                                         </div>
                                                                         <p class="help-block"></p>
                                                                     </div>
                                                                     <div class="control-group">
                                                                         <div class="input-group input-group-sm">
                                                                             <span class="input-group-addon">Phone Number</span>
-                                                                            <input type="number" ng-model="students.driverphone" class="form-control" id="driverphone" name="phone" minlength="8" maxlength="15">
+                                                                            <input type="number" ng-model="students.studentphone" class="form-control" id="studentphone" name="phone" minlength="8" maxlength="15">
                                                                         </div>
                                                                         <p class="help-block"></p>
                                                                     </div>
@@ -123,7 +123,7 @@
                                                                         <div class="col-md-4 text-left">
                                                                         </div>
                                                                         <div class="col-md-8 text-right">
-                                                                            <button ng-click="addstudent(students)" type="submit" class="btn btn-success btn-lg btn-info savethisdriver" id="submitquestion">Add My Information</button>
+                                                                            <button ng-click="addstudent(students)" type="submit" class="btn btn-success btn-lg btn-info savethisstudent" id="submitquestion">Add My Information</button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
@@ -146,14 +146,14 @@
                                                                     <td>
                                                                         <h5>Full name</h5></td>
                                                                     <td>
-                                                                        <h4><a href="#" id="drivername" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click fullname"> {{ student.drivername }}</a></h4>
+                                                                        <h4><a href="#" id="studentname" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click fullname"> {{student.studentname}}</a></h4>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>
                                                                         <h5>Email</h5></td>
                                                                     <td>
-                                                                        <h4><a href="#" id="driveremail" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click driveremail">  {{ student.driveremail }} </a></h4>
+                                                                        <h4><a href="#" id="studentemail" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click studentemail">  {{student.studentemail}} </a></h4>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -161,7 +161,7 @@
                                                                         <h5>Gender</h5></td>
                                                                     <td>
                                                                         <h4>
-				<a id="drivergender" data-type="select" data-pk="1" data-title="Select status" class="editable editable-click gender"> {{ student.drivergender }} </a>
+				<a id="studentgender" data-type="select" data-pk="1" data-title="Select status" class="editable editable-click gender"> {{ student.studentgender }} </a>
 				</h4>
                                                                     </td>
                                                                 </tr>
@@ -169,8 +169,8 @@
                                                                     <td>
                                                                         <h5>Age</h5></td>
                                                                     <td>
-                                                                        <h4><a href="#" id="driverage" data-type="select" data-pk="1" data-title="age" class="editable editable-click age">
-                                                                          {{ student.driverage }}  
+                                                                        <h4><a href="#" id="studentage" data-type="select" data-pk="1" data-title="age" class="editable editable-click age">
+                                                                          {{student.studentage}}  
                                                                             </a></h4>
                                                                     </td>
                                                                 </tr>
@@ -178,8 +178,8 @@
                                                                     <td>
                                                                         <h5>Phone Number</h5></td>
                                                                     <td>
-                                                                        <h4><a href="" id="driverphone" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click phone">
-                                                                         {{ student.driverphone }}     
+                                                                        <h4><a href="" id="studentphone" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click phone">
+                                                                         {{student.studentphone}}     
                                                                             </a></h4>
                                                                     </td>
                                                                 </tr>
@@ -234,11 +234,11 @@
                     }, function() {
                         console.log(students);
                         var newstudents = {
-                            drivername: students.drivername,
-                            driveremail: students.driveremail,
-                            driverphone: students.driverphone,
-                            drivergender: students.drivergender,
-                            driverage: students.driverage
+                            studentname: students.studentname,
+                            studentemail: students.studentemail,
+                            studentphone: students.studentphone,
+                            studentgender: students.studentgender,
+                            studentage: students.studentage
                         }
 
                         $.ajax({

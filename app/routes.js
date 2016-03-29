@@ -1,6 +1,6 @@
 var User = require('../app/models/user');
 var Question = require('../app/models/question');
-var Driver = require('../app/models/studentprofile');
+var Student = require('../app/models/student');
 
 
 module.exports = function (app, passport) {
@@ -253,10 +253,10 @@ module.exports = function (app, passport) {
 
     // add student information =========================
     app.post('/sinfoadd', function (req, res) {
-        var newDriver = new Driver(req.body);
+        var newStudent = new Student(req.body);
         console.log(req.body);
 
-        newDriver.save(function (err, data) {
+        newStudent.save(function (err, data) {
             if (err) {
                 console.log(err);
             } else {
@@ -272,7 +272,7 @@ module.exports = function (app, passport) {
 
     // student info show =========================
     app.get('/showstudentinfo', function (req, res) {
-        Driver.find({}, function (err, data) {
+        Student.find({}, function (err, data) {
             if (err) {
                 return (err);
             } else {
