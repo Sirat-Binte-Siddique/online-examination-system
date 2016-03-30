@@ -109,25 +109,12 @@
 
 
 
-
-
                 $scope.nextquestion = function(value) {
                     console.log("clicked done");
                     $scope.checkanswer(value);
                     $scope.scoreFunction(value);
                     refresh();
                 };
-
-
-
-                //                var maxques = $scope.nextquestion;
-                //                $scope.maxquestion = function() {
-                //                    if (maxques > 0; maxques <= 10; maxques++ ) {
-                //                        location.href = "reports";
-                //                    }
-                //                }
-
-
 
 
 
@@ -155,37 +142,6 @@
                 $scope.stop = function() {
                     $timeout.cancel(mytimeout);
                 }
-
-
-
-
-                //                $scope.maxques = 0;
-                //                $scope.questionout = function() {
-                //
-                //                    if ($scope.maxques >0) {
-                //                        $scope.maxques--;
-                //                        if ($scope.maxques == -1) {
-                //                            $scope.stop();
-                //                            location.href = "reports";
-                //                        }
-                //                    }
-                //                    myquestionout = $timeout($scope.questionout, 1000);
-                //                }
-                //                var myquestionout = $timeout($scope.questionout, 1000);
-                //
-                //
-                //                $scope.stop = function() {
-                //                    $timeout.cancel(myquestionout);
-                //                }
-
-
-
-                //check 10 ques
-                //                $scope.maxquestion = function() {
-                //                    if (i > 0; i <= 10; i++) {
-                //                        console.log("10 question done");
-                //                    }
-                //                }
 
 
 
