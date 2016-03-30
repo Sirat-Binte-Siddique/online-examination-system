@@ -46,7 +46,7 @@
 
                                 <div class="form-group">
                                     <img class="profile-pic" src="http://placehold.it/150" class="img-thumbnail" style="margin-right:0px;" height="150" width="130">
-                                    <div class="upload-button">Upload Image</div>
+                                    <!--                                    <div class="upload-button">Upload Image</div>-->
                                     <input class="file-upload" type="file" accept="image/*" />
                                 </div>
 
@@ -123,7 +123,7 @@
                                                                         <div class="col-md-4 text-left">
                                                                         </div>
                                                                         <div class="col-md-8 text-right">
-                                                                            <button ng-click="addstudent(students._id)" type="submit" class="btn btn-success btn-lg btn-info savethisstudent" id="submitquestion">Add My Information</button>
+                                                                            <button ng-click="addstudent(students)" type="submit" class="btn btn-success btn-lg btn-info savethisstudent" id="submitquestion">Add My Information</button>
                                                                         </div>
                                                                     </div>
                                                                 </form>
@@ -240,20 +240,20 @@
                             studentgender: students.studentgender,
                             studentage: students.studentage
                         }
-
-                        $.ajax({
-                                url: '/sinfoadd',
-                                method: "POST",
-                                data: newstudents
-                            })
-                            .done(function(response) {
-                                swal("Good job!", "Question was Added successfully!", "success")
-                                console.log(response.data);
-                                refresh();
-                            })
-                            .error(function(data) {
-                                swal("Oops", "We couldn't connect to the server!", "error");
-                            });
+                        $http({
+                            method: 'POST',
+                            url: 'sinfoadd',
+                            data: newstudents,
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                            }
+                        }).then(function successCallback(response) {
+                            swal("Good job!", "Question was Added successfully!", "success")
+                            console.log(response.data);
+                            refresh();
+                        }, function errorCallback(response) {
+                            swal("Oops", "We couldn't connect to the server!", "error");
+                        });
                     });
                 };
             });
