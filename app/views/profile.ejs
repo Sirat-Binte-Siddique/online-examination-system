@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online Examination System</title>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/dashboard.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link href="css/dashboard-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -149,7 +154,6 @@
                                                                         <h4><a href="#" id="studentname" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click fullname"> {{student.studentname}}</a></h4>
                                                                     </td>
                                                                 </tr>
-
                                                                 <tr>
                                                                     <td>
                                                                         <h5>Email</h5></td>
@@ -157,17 +161,15 @@
                                                                         <h4><a href="#" id="studentemail" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click studentemail">  {{student.studentemail}} </a></h4>
                                                                     </td>
                                                                 </tr>
-
                                                                 <tr>
                                                                     <td>
                                                                         <h5>Gender</h5></td>
                                                                     <td>
                                                                         <h4>
-				<a id="studentgender" data-type="select" data-pk="1" data-title="Select status" class="editable editable-click gender"> {{student.studentgender}} </a>
+				<a id="studentgender" data-type="select" data-pk="1" data-title="Select status" class="editable editable-click gender"> {{ student.studentgender }} </a>
 				</h4>
                                                                     </td>
                                                                 </tr>
-
                                                                 <tr>
                                                                     <td>
                                                                         <h5>Age</h5></td>
@@ -177,7 +179,6 @@
                                                                             </a></h4>
                                                                     </td>
                                                                 </tr>
-
                                                                 <tr>
                                                                     <td>
                                                                         <h5>Phone Number</h5></td>
@@ -223,10 +224,11 @@
 
                 //for add student info
                 $scope.addstudent = function(students) {
+                    console.log(students);
                     $http({
                         method: 'POST',
                         url: '/savestudent',
-                        data: students,
+                        params: students,
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                         }
@@ -239,8 +241,9 @@
                     });
                 };
 
-
             });
+
+
 
 
 
@@ -272,8 +275,6 @@
         </script>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/dashboard.js"></script>
         <style CSS>
             @import url("http://bootswatch.com/flatly/bootstrap.min.css");
 

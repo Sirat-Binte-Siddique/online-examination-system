@@ -251,7 +251,7 @@ module.exports = function (app, passport) {
         });
     });
 
-
+    // add student information =========================
 
 
     // student info show =========================
@@ -266,10 +266,10 @@ module.exports = function (app, passport) {
     });
 
 
-    // add student information =========================
     app.post('/savestudent', function (req, res) {
-        var newStudent = new Student(req.body);
-        console.log(req.body);
+        var newStudent = new Student(req.query);
+        console.log(req.query);
+
         newStudent.save(function (err, data) {
             if (err) {
                 console.log(err);
@@ -283,9 +283,11 @@ module.exports = function (app, passport) {
     });
 
 
-    // save score =========================
+
     app.post('/savescore', function (req, res) {
+
         console.log(req.query);
+
         User.findByIdAndUpdate({
             _id: req.user._id
         }, req.query, function (err, user) {
@@ -297,9 +299,8 @@ module.exports = function (app, passport) {
         });
     });
 
-
-    // get score =========================
     app.get('/getscore', function (req, res) {
+
         User.findOne({
             _id: req.user._id
         }, function (err, user) {
@@ -310,6 +311,7 @@ module.exports = function (app, passport) {
             }
         });
     });
+
 
 
 
