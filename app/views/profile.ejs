@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online Examination System</title>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/dashboard.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link href="css/dashboard-sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -202,11 +207,11 @@
 
         <script>
             var app = angular.module('myApp', []);
-            app.controller('myCtrl', function($scope, $http) {
+            app.controller('myCtrl', function ($scope, $http) {
 
-                var refresh = function() {
+                var refresh = function () {
                     $http.get("/showstudentinfo")
-                        .then(function(response) {
+                        .then(function (response) {
                             $scope.allstudent = response.data;
                             console.log(response.data);
                         });
@@ -218,11 +223,12 @@
 
 
                 //for add student info
-                $scope.addstudent = function(students) {
+                $scope.addstudent = function (students) {
+                    console.log(students);
                     $http({
                         method: 'POST',
                         url: '/savestudent',
-                        data: students,
+                        params: students,
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                         }
@@ -241,39 +247,35 @@
 
 
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $('#loadingcustom').fadeOut('fast');
             }, 2000);
 
 
             //profile pic upload
-            $(document).ready(function() {
-                var readURL = function(input) {
+            $(document).ready(function () {
+                var readURL = function (input) {
                     if (input.files && input.files[0]) {
                         var reader = new FileReader();
 
-                        reader.onload = function(e) {
+                        reader.onload = function (e) {
                             $('.profile-pic').attr('src', e.target.result);
                         }
                         reader.readAsDataURL(input.files[0]);
                     }
                 }
-                $(".file-upload").on('change', function() {
+                $(".file-upload").on('change', function () {
                     readURL(this);
                 });
-                $(".upload-button").on('click', function() {
+                $(".upload-button").on('click', function () {
                     $(".file-upload").click();
                 });
             });
-
         </script>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="js/dashboard.js"></script>
         <style CSS>
             @import url("http://bootswatch.com/flatly/bootstrap.min.css");
-
         </style>
 
 </body>
