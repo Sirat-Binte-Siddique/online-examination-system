@@ -98,7 +98,7 @@ module.exports = function (app, passport) {
 
     // Dashboard SECTION =========================
     app.get('/dashboard', isLoggedIn, function (req, res) {
-        console.log(req.user);
+        //console.log(req.user);
 
         if (req.user.isadmin) {
             res.render('dashboardadmin');
@@ -282,6 +282,34 @@ module.exports = function (app, passport) {
     });
 
 
+
+    app.post('/savescore', function (req, res) {
+
+        console.log(req.query);
+
+        User.findByIdAndUpdate({
+            _id: req.user._id
+        }, req.query, function (err, user) {
+            if (err) {
+                return (err);
+            } else {
+                res.json(user);
+            }
+        });
+    });
+
+    app.get('/getscore', function (req, res) {
+
+        User.findOne({
+            _id: req.user._id
+        }, function (err, user) {
+            if (err) {
+                return (err);
+            } else {
+                res.json(user.score);
+            }
+        });
+    });
 
 
 

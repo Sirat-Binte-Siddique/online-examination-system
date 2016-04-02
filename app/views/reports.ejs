@@ -61,7 +61,6 @@
         border: 1px solid #333;
         padding-left: .51em;
     }
-
 </style>
 
 
@@ -107,12 +106,31 @@
             var app = angular.module('myApp', []);
 
 
-            app.controller('myCtrl', function($scope, scoreService) {
+            app.controller('myCtrl', function ($scope, $http) {
 
-                $scope.score = scoreService.Score;
+                var GetScore = function () {
+                    $http({
+                        method: 'GET',
+                        url: '/getscore',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                        }
+                    }).then(function successCallback(response) {
+                        if (response) {
+                            console.log(response);
+                            if (response.data) {
+                                console.log(response.data);
+                                $scope.score = response.data;
+                            }
+                        }
+                    }, function errorCallback(response) {
+                        console.log(response);
+                    });
+                }
+
+                GetScore();
 
             });
-
         </script>
 
 </body>

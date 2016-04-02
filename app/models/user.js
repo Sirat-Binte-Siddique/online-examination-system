@@ -29,7 +29,8 @@ var userSchema = mongoose.Schema({
     isadmin: {
         type: Boolean,
         default: 0
-    }
+    },
+    score: Number
 });
 
 // generating a hash
