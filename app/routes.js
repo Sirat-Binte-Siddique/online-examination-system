@@ -252,22 +252,6 @@ module.exports = function (app, passport) {
     });
 
     // add student information =========================
-    app.post('/sinfoadd', function (req, res) {
-        var newStudent = new Student(req.body);
-        console.log(req.body);
-
-        newStudent.save(function (err, data) {
-            if (err) {
-                console.log(err);
-            } else {
-
-                console.log("info Add successfully");
-                res.json(data);
-
-            }
-        });
-    });
-
 
 
     // student info show =========================
@@ -277,6 +261,22 @@ module.exports = function (app, passport) {
                 return (err);
             } else {
                 res.json(data);
+            }
+        });
+    });
+
+
+    app.post('/savestudent', function (req, res) {
+        var newStudent = new Student(req.body);
+        console.log(req.body);
+        newStudent.save(function (err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+
+                console.log("info Add successfully");
+                res.json(data);
+
             }
         });
     });
