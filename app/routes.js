@@ -3,10 +3,12 @@ var Question = require('../app/models/question');
 var Student = require('../app/models/student');
 
 
+
 module.exports = function (app, passport) {
     app.get('/', function (req, res) {
         res.render('index');
     });
+
 
 
     //==================================================================
@@ -23,12 +25,15 @@ module.exports = function (app, passport) {
         });
     });
 
+
+
     // removeadmin SECTION =========================
     app.get('/removeadmin', isLoggedIn, function (req, res) {
         res.render('removeadmin.ejs', {
             user: req.user
         });
     });
+
 
 
     // add new question SECTION =========================
@@ -43,10 +48,11 @@ module.exports = function (app, passport) {
 
                 console.log("Add successfully");
                 res.json(data);
-
             }
         });
     });
+
+
 
 
     // Admin check true ====================
@@ -66,6 +72,9 @@ module.exports = function (app, passport) {
         });
     });
 
+
+
+
     // Admin check false =====================
     app.post('/notadmin', function (req, res) {
         console.log(req.body);
@@ -82,6 +91,8 @@ module.exports = function (app, passport) {
             }
         });
     });
+
+
 
 
     // showall user/admin SECTION =========================
@@ -150,6 +161,26 @@ module.exports = function (app, passport) {
             });
     });
 
+
+
+
+
+    // student delete=====================
+    app.post('/removestudent', function (req, res) {
+        console.log(req.body);
+
+        Student.remove({
+                _id: req.body._id
+            },
+            function (err, _id) {
+                if (err) {
+                    res.json('error');
+                } else {
+                    console.log("Delete student Successfully");
+                    res.json('success');
+                }
+            });
+    });
 
 
 
@@ -250,8 +281,6 @@ module.exports = function (app, passport) {
             user: req.user
         });
     });
-
-    // add student information =========================
 
 
     // student info show =========================

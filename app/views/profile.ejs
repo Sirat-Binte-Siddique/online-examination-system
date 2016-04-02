@@ -137,62 +137,49 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+
                                             <div class="tab-pane" id="tab2">
-                                                <div class="panel panel-primary ">
+                                                <div class="panel panel-default">
                                                     <div class="panel-body">
-                                                        <table class="table table-striped">
+
+                                                        <table class="table table-bordered">
                                                             <thead>
                                                                 <tr>
-
-                                                                </tr>
+                                                                    <th>
+                                                                        <h4><small>Name</small></h4></th>
+                                                                    <th>
+                                                                        <h4><small>email</small></h4></th>
+                                                                    <th>
+                                                                        <h4><small>gender</small></h4></th>
+                                                                    <th>
+                                                                        <h4><small>Phone</small></h4></th>
+                                                                    <th>
+                                                                        <h4><small>Age</small></h4></th>
+                                                                    <th>
+                                                                        <h4><small>Action</small></h4></th>
                                                             </thead>
-                                                            <tbody ng-repeat="student in allstudent">
-                                                                <tr>
-                                                                    <td>
-                                                                        <h5>Full name</h5></td>
-                                                                    <td>
-                                                                        <h4><a href="#" id="studentname" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click fullname"> {{student.studentname}}</a></h4>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <h5>Email</h5></td>
-                                                                    <td>
-                                                                        <h4><a href="#" id="studentemail" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click studentemail">  {{student.studentemail}} </a></h4>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <h5>Gender</h5></td>
-                                                                    <td>
-                                                                        <h4>
-				<a id="studentgender" data-type="select" data-pk="1" data-title="Select status" class="editable editable-click gender"> {{ student.studentgender }} </a>
-				</h4>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <h5>Age</h5></td>
-                                                                    <td>
-                                                                        <h4><a href="#" id="studentage" data-type="select" data-pk="1" data-title="age" class="editable editable-click age">
-                                                                          {{student.studentage}}  
-                                                                            </a></h4>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <h5>Phone Number</h5></td>
-                                                                    <td>
-                                                                        <h4><a href="" id="studentphone" data-type="text" data-pk="1" data-title="Enter Fullname" class="editable editable-click phone">
-                                                                         {{student.studentphone}}     
-                                                                            </a></h4>
-                                                                    </td>
+                                                            <tbody>
+                                                                <tr ng-repeat="student in allstudent">
+
+                                                                    <td>{{student.studentname}}</td>
+                                                                    <td>{{student.studentemail}}</td>
+                                                                    <td>{{student.studentgender}}</td>
+                                                                    <td>{{student.studentphone}}</td>
+                                                                    <td>{{student.studentage}}</td>
+
+                                                                    <th>
+
+                                                                        <button type="button" class="btn btn-danger" ng-click="removestudent(student._id)">Delete</button>
+
+                                                                    </th>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -240,6 +227,30 @@
                         swal("Oops", "We couldn't connect to the server!", "error");
                     });
                 };
+
+
+
+
+                //for delete student info
+                $scope.removestudent = function(_id) {
+                    console.log(_id);
+                    $http({
+                        method: 'POST',
+                        url: '/removestudent',
+                        data: {
+                            '_id': _id
+                        }
+                    }).then(function successCallback(response) {
+                        swal("Good job!", "Information was delete successfully!", "success")
+                        console.log(response.data);
+                        refresh();
+                    }, function errorCallback(response) {
+                        swal("Oops", "We couldn't connect to the server!", "error");
+                    });
+                };
+
+
+
 
             });
 
