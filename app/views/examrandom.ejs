@@ -25,8 +25,8 @@
 
 
 
-        <form id="form1" runat="server" style="margin-left:60px; margin-top:60px;">
-            <div class="container text-center">
+        <form id="form1" runat="server" style="margin-left:0px; margin-top:0px; float:right;">
+            <div class="container-fluid text-center">
                 <table width="100%" align="center">
                     <ul class="clock_right">
                         <h3>Time left :</h3>
@@ -40,14 +40,12 @@
         </form>
 
 
-
-
-
+        <!--
         <div class="container text-center" style="margin-left:60px; margin-top:30px; margin-right:50px;">
             <h1> Your score is :<span> {{score}} </span></h1>
 
             <h3> Your topic : {{ques.categories}} </h3>
-            <!--            <h4> section : {{section.sections}} </h4>-->
+                        <h4> section : {{section.sections}} </h4>
             <h2> {{ques.question}} </h2>
             <p>
                 <button type="button" class="btn btn-default" ng-click="nextquestion(1)">{{ques.option1}}</button>
@@ -63,10 +61,76 @@
             </p>
             <p>
                 <button type="button" class="btn btn-default" ng-click="nextquestion(4)">{{ques.option4}}</button>
-
             </p>
-
         </div>
+-->
+
+
+        <div class="container text-center" style="margin-left:0px; margin-top:60px; margin-right:0px;">
+            <h5> Your score is :<span> {{score}} </span></h5>
+            <h4> Your topic : {{ques.categories}} </h4>
+            <!--            <div class="row">-->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-10">
+                        <h3 class="map"> {{ques.question}} </h3>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-6 botton_ ">
+                        <p>
+                            <a type="button" class="btn btn-default btn-lg mr_l" ng-click="nextquestion(1)">{{ques.option1}}
+                                </a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 botton_ ">
+                        <p>
+                            <a type="button" class="btn btn-default btn-lg mr_l" ng-click="nextquestion(2)">{{ques.option2}}
+                                </a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+
+                    <div class="col-md-6 botton_ ">
+                        <p>
+                            <a type="button" class="btn btn-default btn-lg mr_l" ng-click="nextquestion(3)">{{ques.option3}}
+                                </a>
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 botton_ ">
+                        <p>
+                            <a type="button" class="btn btn-default btn-lg mr_l" ng-click="nextquestion(4)">{{ques.option4}}
+                                </a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--            </div>-->
+        </div>
+
+
+
+
+
+
 
 
 
