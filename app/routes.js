@@ -93,20 +93,6 @@ module.exports = function (app, passport) {
     });
 
 
-
-
-    // showall user/admin SECTION =========================
-    app.get('/showalluser', function (req, res) {
-        User.find(function (err, data) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.send(data);
-            }
-        });
-    });
-
-
     // Dashboard SECTION =========================
     app.get('/dashboard', isLoggedIn, function (req, res) {
         //console.log(req.user);
@@ -130,7 +116,6 @@ module.exports = function (app, passport) {
 
     // all question show =========================
     app.get('/getallquestion', function (req, res) {
-
         Question.find({}, function (err, data) {
             if (err) {
                 return (err);
@@ -138,8 +123,29 @@ module.exports = function (app, passport) {
                 res.json(data);
             }
         });
-
     });
+
+
+
+    // showUserPage  =========================
+    app.get('/showUserPage', isLoggedIn, function (req, res) {
+        res.render('showuser.ejs', {
+            user: req.user
+        });
+    });
+
+
+    // showalluser    =========================
+    app.get('/showalluser', isLoggedIn, function (req, res) {
+        User.find(function (err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(data);
+            }
+        });
+    });
+
 
 
 
