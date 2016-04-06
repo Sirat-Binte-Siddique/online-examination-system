@@ -28,8 +28,8 @@ module.exports = function (app, passport) {
 
 
     // removeadmin SECTION =========================
-    app.get('/removeadmin', isLoggedIn, function (req, res) {
-        res.render('removeadmin.ejs', {
+    app.get('/admin', isLoggedIn, function (req, res) {
+        res.render('manageadmin.ejs', {
             user: req.user
         });
     });
