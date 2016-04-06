@@ -38,10 +38,51 @@
         color: #333;
         text-decoration: none;
     }
+    
+    html {
+        box-shadow: inset 0 0 300px rgba(0, 0, 0, 0.4);
+        height: 100%;
+    }
+    
+    body {
+        background: #e1e1e1;
+        height: 100%;
+        margin: 0 auto;
+        padding: 3%;
+        width: 100%;
+    }
+    /* begin, shall we */
+    
+    #vans {
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2), 0 7px 20px rgba(0, 0, 0, 0.4);
+        height: 256px;
+        margin: 0 auto;
+        position: relative;
+        width: 600px;
+        background: /* s */
+        radial-gradient(center, ellipse cover, rgba(106, 0, 0, 1) 0%, rgba(106, 0, 0, 1) 55%, rgba(106, 0, 0, 0) 55%), linear-gradient(233deg, transparent 40%, #6a0000 40%, #6a0000 60%, transparent 60%), linear-gradient(233deg, transparent 40%, #6a0000 40%, #6a0000 60%, transparent 60%), radial-gradient(center, ellipse cover, rgba(256, 256, 256, 1) 0%, rgba(256, 256, 256, 1) 55%, rgba(256, 256, 256, 0) 55%), radial-gradient(center, ellipse cover, rgba(106, 0, 0, 1) 0%, rgba(106, 0, 0, 1) 55%, rgba(106, 0, 0, 0) 55%), radial-gradient(center, ellipse cover, rgba(256, 256, 256, 1) 0%, rgba(256, 256, 256, 1) 55%, rgba(256, 256, 256, 0) 55%), /* v */
+        linear-gradient(15deg, transparent 40%, #fff 40%, #fff 60%, transparent 60%), linear-gradient(-15deg, transparent 40%, #fff 40%, #fff 60%, transparent 60%), linear-gradient(-15deg, transparent 10%, #fff 10%, #fff 90%, transparent 90%), /* a */
+        linear-gradient(-15deg, transparent 45%, #fff 45%, #fff 60%, transparent 60%), linear-gradient(15deg, transparent 45%, #fff 45%, #fff 60%, transparent 60%), linear-gradient(top, transparent 45%, #fff 45%, #fff 60%, transparent 60%), /* n */
+        linear-gradient(0deg, transparent 45%, #fff 45%, #fff 60%, transparent 60%), linear-gradient(27deg, transparent 45%, #fff 45%, #fff 60%, transparent 60%), linear-gradient(0deg, transparent 45%, #fff 45%, #fff 60%, transparent 60%), /* div */
+        #6a0000;
+        background-position: /* s */
+        475px 173px, 436px 126px, 487px 107px, 420px 121px, 475px 100px, 420px 52px, /* v */
+        0px 10px, 70px 10px, 145px 10px, /* a */
+        120px 70px, 168px 70px, 220px 100px, /* n */
+        178px 70px, 265px 70px, 270px 70px;
+        /* div */
+        background-repeat: no-repeat;
+        background-size: /* s */
+        40px 40px, 66px 80px, 66px 80px, 150px 145px, 40px 40px, 150px 145px, /* v */
+        188px 236px, 188px 236px, 456px 40px, /* a */
+        188px 176px, 188px 176px, 50px 195px, /* n */
+        268px 176px, 188px 176px, 268px 176px, /* div */
+        656px 256px;
+    }
 
 </style>
 
-<body ng-app="myApp" ng-controller="myCtrl" style="background-color: #5FA2DB;">
+<body ng-app="myApp" ng-controller="myCtrl">
     <% include sidebar/dashboard-sidebar %>
 
 
@@ -51,29 +92,31 @@
                 <% include partials/loadingCustom.ejs %>
             </div>
 
+            <div id="vans">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <h3>Choose Examination Categories: </h3>
+                    <select class="form-control" ng-submit="ques.categories" id="category">
+                        <option value="" id=""></option>
+                        <option value="Javascript" id="categories">Javascript</option>
+                        <option value="Java" id="categories">Java</option>
+                        <option value="Networking" id="categories">Networking</option>
+                        <option value="html" id="categories">HTML & Webpage Design</option>
+                    </select>
+                    <br>
+
+                    <h4>Choose section: </h4>
+                    <select class="form-control" ng-submit="section.sections" id="section">
+                        <option value="" id=""></option>
+                        <option value="hard" id="sections">hard</option>
+                        <option value="easy" id="sections">easy</option>
+                    </select>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
 
 
-            <h3>Choose Examination Categories: </h3>
-            <select class="form-control" ng-submit="ques.categories" id="category">
-                <option value="" id=""></option>
-                <option value="Javascript" id="categories">Javascript</option>
-                <option value="Java" id="categories">Java</option>
-                <option value="Networking" id="categories">Networking</option>
-                <option value="html" id="categories">HTML & Webpage Design</option>
-            </select>
-            <br>
-
-            <h4>Choose section: </h4>
-            <select class="form-control" ng-submit="section.sections" id="section">
-                <option value="" id=""></option>
-                <option value="day" id="sections">Day</option>
-                <option value="eve" id="sections">Evening</option>
-            </select>
-            <br>
             <a ng-click="btnclicked()" class="btn btn-success"> Save & Go </a>
-
-
-
 
 
         </div>
