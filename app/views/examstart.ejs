@@ -18,7 +18,30 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl">
+<style>
+    .btn {
+        margin-top: 15px;
+        text-align: center;
+    }
+    
+    .btn-success {
+        width: 30%;
+        padding: 17px 0%!important;
+        border-radius: 15px!important;
+        font-size: 2rem!important;
+        border: 1px solid #50712E;
+        color: #fff;
+    }
+    
+    .btn .btn-success:hover,
+    .btn-success.focus {
+        color: #333;
+        text-decoration: none;
+    }
+
+</style>
+
+<body ng-app="myApp" ng-controller="myCtrl" style="background-color: #5FA2DB;">
     <% include sidebar/dashboard-sidebar %>
 
 
@@ -36,7 +59,7 @@
                 <option value="Javascript" id="categories">Javascript</option>
                 <option value="Java" id="categories">Java</option>
                 <option value="Networking" id="categories">Networking</option>
-                <option value="MIS" id="categories">MIS</option>
+                <option value="html" id="categories">HTML & Webpage Design</option>
             </select>
             <br>
 
@@ -47,7 +70,7 @@
                 <option value="eve" id="sections">Evening</option>
             </select>
             <br>
-            <a ng-click="btnclicked()" class="btn btn-success"> Save & Start </a>
+            <a ng-click="btnclicked()" class="btn btn-success"> Save & Go </a>
 
 
 
@@ -68,7 +91,6 @@
     var app = angular.module('myApp', []);
 
     app.controller('myCtrl', function($scope, $http, $location) {
-        //$scope.selectedValue = 'math';
 
         $('#category').change(function() {
             //console.log($(this).val());

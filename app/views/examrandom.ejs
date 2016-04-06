@@ -43,6 +43,7 @@
             <h5> Your score is :<span> {{score}} </span></h5>
             <h4> Your topic : {{ques.categories}} </h4>
             <!--            <div class="row">-->
+            <!--
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-1">
@@ -56,9 +57,11 @@
                     </div>
                 </div>
             </div>
+-->
 
             <div class="col-md-12">
                 <div class="row">
+                    <h2> {{ques.question}} </h2>
 
                     <div class="col-md-6 botton_ ">
                         <p>
@@ -187,7 +190,7 @@
 
                 // timer
                 $scope.sec = 60;
-                $scope.min = 2;
+                $scope.min = 0;
                 $scope.onTimeout = function() {
 
                     if ($scope.sec == 0) {
