@@ -158,17 +158,17 @@
 
         $scope.btnclicked = function(value) {
             swal({
-                title: "Are you sure?",
-                text: "Are you ready for exam ???",
+                title: "Are you ready for exam ?",
+                text: "Are you sure?",
                 type: "warning",
                 showCancelButton: true,
                 closeOnConfirm: false,
-                confirmButtonText: "yes!, I am ",
+                confirmButtonText: "yes !",
                 confirmButtonColor: "#ec6c62"
             }, function() {
                 swal({
                     title: "Your time start now",
-                    timer: 3000,
+                    timer: 4000,
                     showConfirmButton: false
                 });
                 $.ajax({
