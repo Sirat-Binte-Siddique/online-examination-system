@@ -9,7 +9,6 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <link href="css/dashboard-sidebar.css" rel="stylesheet">
     <link href="css/examrandom.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -17,14 +16,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl">
     <% include sidebar/dashboard-sidebar %>
-
-
-
         <form id="form1" runat="server" style="margin-left:60px; margin-top:58px;">
             <div class="container text-center">
                 <table width="100%" align="center">
@@ -40,15 +35,9 @@
         </form>
 
         <div class="container text-center" style="margin-left:60px; margin-top:10px; margin-right:0px;">
-            <!--
-            <h5> Your score is :<span> {{score}} </span></h5>
-            <h4> Your topic : {{ques.categories}} </h4>
--->
-
             <div class="col-md-12">
                 <div class="row">
                     <h2> {{ques.question}} </h2>
-
                     <div class="col-md-6 botton_ ">
                         <p>
                             <a type="button" class="btn btn-default btn-lg mr_l" ng-click="nextquestion(1)">{{ques.option1}}
@@ -91,14 +80,10 @@
 
         <script>
             var app = angular.module('myApp', []);
-
             app.controller('myCtrl', function($scope, $http, $location, $timeout) {
-
                 var valuee = $location.url();
                 var onlyvalue = valuee.slice(1);
                 console.log(onlyvalue);
-
-
 
                 var saveScore = function() {
                     $http({
@@ -121,12 +106,6 @@
                         console.log(response);
                     });
                 }
-
-
-
-
-
-
                 var refresh = function() {
                     $http({
                         method: 'POST',
@@ -139,11 +118,9 @@
                         }
                     }).then(function successCallback(response) {
                         if (response) {
-                            //console.log(response);
                             if (response.data) {
                                 $scope.ques = response.data;
                                 $scope.answers = response.data.answers;
-                                //console.log(response.data);
                             }
                         } else {
                             console.log(response.data);
@@ -154,18 +131,11 @@
                 }
                 refresh();
 
-
-
-
-
                 $scope.nextquestion = function(value) {
                     $scope.checkanswer(value);
                     $scope.scoreFunction(value);
                     refresh();
                 };
-
-
-
 
                 // timer
                 $scope.sec = 40;
@@ -191,9 +161,6 @@
                 $scope.stop = function() {
                     $timeout.cancel(mytimeout);
                 }
-
-
-
 
                 //check right answer
                 $scope.checkanswer = function(value) {
@@ -240,10 +207,6 @@
                     }
                 }
 
-
-
-
-
                 //checkscore
                 $scope.score = 0;
                 $scope.scoreFunction = function(value) {
@@ -285,7 +248,6 @@
             });
 
         </script>
-
 </body>
 
 </html>

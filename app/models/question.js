@@ -1,11 +1,8 @@
 var mongoose = require('mongoose');
-
 var questionSchema = mongoose.Schema({
-
     categories: String,
     section: String,
     question: String,
-
     option1: String,
     option2: String,
     option3: String,
@@ -15,9 +12,7 @@ var questionSchema = mongoose.Schema({
         option2: Boolean,
         option3: Boolean,
         option4: Boolean
-
     }
-
 });
 
 module.exports = mongoose.model('Question', questionSchema);
