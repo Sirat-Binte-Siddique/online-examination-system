@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-//var Question = require('./app/models/question');
+//var Question = require('./app/models/question' );
 
 var configDB = require('./config/database.js');
 mongoose.connect(configDB.url); // connect to our database
