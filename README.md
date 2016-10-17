@@ -1,0 +1,3 @@
+# online-examination-system
+
+Online examination can make the student’s life easier because they don’t need any paper and pen to do the examination. Furthermore, online examination can be effective and efficient. The students don’t waste much time to answer the questions because they only click on the best answer that is provided. One other advantage of online examination is that we can know our scores just after the exam. Sometimes, instructors can be very busy on a given day and do not have any time to check the exams. Online examination can solve this problem. The instructor does not need to check all of the exams. It saves teachers and students times 
